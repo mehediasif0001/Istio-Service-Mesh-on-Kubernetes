@@ -151,12 +151,19 @@ You should see the Envoy proxy container injected by Istio.
 ![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/sidecar.png)
 
 
+
 📊 Business Impact
 
 ✦ Simplifies service-to-service communication in Kubernetes
+
 ✦ Provides observability without modifying app code
+
 ✦ Improves security with mTLS and policies
+
 ✦ Enables advanced traffic management for canary releases and blue/green deployments
+
+
+
 
 👤 Author
 
