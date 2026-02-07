@@ -108,6 +108,32 @@ istioctl version
 ```bash
 kubectl label namespace default istio-injection=enabled
 ```
+## ✦ Bookinfo Sample Application Deployment
+
+We will deploy the Bookinfo application to test Istio features like sidecar injection, routing, and observability.
+
+✦ Apply the Bookinfo sample manifest
+
+```bash
+kubectl apply -f istio-sample.yml
+```
+**istioctl analyze**
+
+```bash
+istioctl analyze
+```
+**Check Pods**
+```bash
+kubectl get pods
+```
+**✦ Sidecar Verification**
+
+Randomly describe one pod to check Istio sidecar:
+
+```bash
+kubectl describe pod details-v1-67894999b5-cq46t
+```
+You should see the Envoy proxy container injected by Istio.
 
 
 
