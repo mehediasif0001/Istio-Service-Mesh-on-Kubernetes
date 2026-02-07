@@ -108,6 +108,10 @@ istioctl version
 ```bash
 kubectl label namespace default istio-injection=enabled
 ```
+
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/inject.png)
+
+
 ## ✦ Bookinfo Sample Application Deployment
 
 We will deploy the Bookinfo application to test Istio features like sidecar injection, routing, and observability.
@@ -117,15 +121,21 @@ We will deploy the Bookinfo application to test Istio features like sidecar inje
 ```bash
 kubectl apply -f istio-sample.yml
 ```
+
 **istioctl analyze**
 
 ```bash
 istioctl analyze
 ```
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/apply-anlyze.png)
+
+
 **Check Pods**
 ```bash
 kubectl get pods
 ```
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/get%20po.png)
+
 **✦ Sidecar Verification**
 
 Randomly describe one pod to check Istio sidecar:
@@ -135,6 +145,10 @@ kubectl describe pod details-v1-67894999b5-cq46t
 ```
 You should see the Envoy proxy container injected by Istio.
 
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/des%20command.png)
+
+
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/sidecar.png)
 
 
 📊 Business Impact
