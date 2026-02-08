@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: httpbin-vs
+spec:
+  hosts:
+  - "httpbin.example.com"          # Hostname exposed via the Istio gateway
+  gateways:
+  - httpbin-gateway                # Gateway handling external traffic
+  http:
+  - match:
+    - uri:
+        prefix: "/delay"           # Matches requests with path starting /delay
+    route:
+    - destination:
+        host: httpbin              # Kubernetes service name
+        port: 
+          number: 8000            # Target service port
+  - match:
+    - uri:
+        prefix: "/status"          # Matches requests with path starting /status
+    route:
+    - destination:
+        host: httpbin              # Kubernetes service name
+        port:
+          number: 8000            # Target service port
