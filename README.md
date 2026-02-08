@@ -23,16 +23,9 @@ This repository demonstrates how **Istio Service Mesh** solves these problems **
 
 ## 🔹 **Architecture Overview**
 
-Client  
-→ Istio Ingress Gateway  
-→ Envoy Sidecar Proxy  
-→ Kubernetes Services & Pods  
 
-Istio Control Plane (`istiod`) manages:
-- Traffic policies
-- Security (mTLS)
-- Telemetry and observability
 
+![image alt](https://istio.io/latest/docs/ops/deployment/architecture/arch.svg)
 ---
 
 ## ⚙️ **Implementation Details**
