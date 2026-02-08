@@ -77,8 +77,7 @@ An Istio service mesh is divided into **Data Plane** and **Control Plane**:
 | Profile Used | demo |
 | Control Plane | istiod |
 | Data Plane | Envoy Proxy |
-| Namespace Injection | Automatic |
-| Observability | Prometheus, Grafana, Kiali |
+
 
 ---
 
