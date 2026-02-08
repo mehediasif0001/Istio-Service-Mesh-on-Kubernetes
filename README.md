@@ -26,6 +26,45 @@ This repository demonstrates how **Istio Service Mesh** solves these problems **
 
 
 ![image alt](https://istio.io/latest/docs/ops/deployment/architecture/arch.svg)
+
+
+
+
+An Istio service mesh is divided into **Data Plane** and **Control Plane**:
+
+### Data Plane 🛠️
+- Composed of **Envoy proxies** deployed as **sidecars**.
+- **Manages all network traffic** between microservices.
+- Collects **telemetry** and reports mesh traffic.
+- Key Envoy features:
+  - Dynamic service discovery
+  - Load balancing
+  - TLS termination
+  - HTTP/2 & gRPC proxying
+  - Circuit breakers & retries
+  - Fault injection & staged rollouts
+  - Rich metrics collection
+- Enables adding Istio features **without code changes**.
+
+### Control Plane 🏗️
+- Managed by **Istiod**.
+- Responsibilities:
+  - Service discovery
+  - Configuration management
+  - Certificate & identity management
+- Converts high-level traffic rules into **Envoy configurations**.
+- Provides **security & authentication**:
+  - mTLS for secure communication
+  - Service-to-service and end-user authentication
+  - Role-based access control
+- Supports multiple environments: **Kubernetes, VMs, etc.**
+
+### Benefits 
+- Fine-grained traffic management
+- Network resiliency & fault tolerance
+- Strong security policies
+- Observability & telemetry
+
 ---
 
 ## ⚙️ **Implementation Details**
