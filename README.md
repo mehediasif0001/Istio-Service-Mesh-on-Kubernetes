@@ -182,6 +182,68 @@ You should see the Envoy proxy container injected by Istio.
 
 ![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/sidecar.png)
 
+# Istio Gateway & VirtualService – httpbin Routing
+
+This task demonstrates how to expose a Kubernetes service (httpbin) to external traffic using Istio Gateway and VirtualService, and how to control traffic routing based on URL paths.
+
+
+
+
+Client ----> Istio Ingress Gateway ----> VirtualService (path-based routing) ---> httpbin Service (port 8000)
+
+
+
+
+**Step 1: Gateway Configuration**
+I created an Istio Gateway named httpbin-gateway that listens for external HTTP traffic on port 80 for the hostname: "httpbin.example.com"
+
+|Gateway Configuration: https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/gateway.yml|
+
+ **Why this is needed?**
+
+- Kubernetes Services are **internal by default**
+- External traffic cannot reach a Service directly
+- Istio requires a **Gateway** to allow traffic from outside the cluster
+
+The **Gateway** defines:
+- Which **port** is open
+- Which **protocol** is allowed (HTTP / HTTPS / TCP)
+- Which **hostnames** are accepted
+
+Without a Gateway, **external traffic cannot enter the Istio service mesh**.
+
+---
+
+**How it works?**
+
+- The `selector` attaches this Gateway to **Istio’s default ingress gateway pod**
+- **Port 80** is opened to accept **HTTP** requests
+- Only requests with the `Host` header set to:
+
+## step2:
+**VirtualService Configuration**
+https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/virtual-service.yml
+
+ configured **path-based routing** with the following rules:
+
+### Allowed Paths
+- `/delay`
+- `/status`
+
+### Traffic Destination
+- **Service:** `httpbin`
+- **Port:** `8000`
+
+### How routing works
+- Incoming traffic first enters through the **Istio Gateway**
+- The **VirtualService** checks the request path
+- If the path matches `/delay` or `/status`:
+  - The request is forwarded to the `httpbin` service
+  - Traffic is sent to port `8000`
+- Requests with other paths are **not matched** by this VirtualService
+
+This configuration enables **fine-grained HTTP routing** inside the Istio service mesh.
+
 
 
 📊 Business Impact
