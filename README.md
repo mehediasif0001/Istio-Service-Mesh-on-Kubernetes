@@ -197,7 +197,7 @@ Client ----> Istio Ingress Gateway ----> VirtualService (path-based routing) ---
 **Step 1: Gateway Configuration**
 I created an Istio Gateway named httpbin-gateway that listens for external HTTP traffic on port 80 for the hostname: "httpbin.example.com"
 
-|Gateway Configuration: https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/gateway.yml|
+
 
  **Why this is needed?**
 
@@ -213,11 +213,17 @@ The **Gateway** defines:
 Without a Gateway, **external traffic cannot enter the Istio service mesh**.
 
 ---
-![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/Screenshot_1.png)
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/1.png)
 
-![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/Screenshot_2.png)
+this is default labels on ingrerss gatway . I will use it for gateway selector
 
-![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/Screenshot_3.png)
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/3.png)
+
+Gateway Configuration: https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/gateway.yml
+
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/2.png)
+
+
 
 **How it works?**
 
@@ -248,6 +254,24 @@ https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/vir
 - Requests with other paths are **not matched** by this VirtualService
 
 This configuration enables **fine-grained HTTP routing** inside the Istio service mesh.
+
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/get%20vs.png)
+
+
+find accessable host name and port;
+
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/11.png)
+
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/2.png)
+
+describe services; 
+
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/desSVc.png)
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/des2.png)
+
+try to access:
+
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/validate.png)
 
 
 
