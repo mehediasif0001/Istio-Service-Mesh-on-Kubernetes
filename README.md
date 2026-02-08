@@ -214,7 +214,7 @@ Without a Gateway, **external traffic cannot enter the Istio service mesh**.
 ---
 ![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/1.png)
 
-this is default labels on ingrerss gatway . I will use it for gateway selector
+this is default labels on istio-ingressgateway ( this pod is avaliable under the ```istio-system``` namespace) . I will use it labels for gateway selector
 
 ![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/3.png)
 
