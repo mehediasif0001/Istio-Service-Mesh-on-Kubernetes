@@ -213,6 +213,11 @@ The **Gateway** defines:
 Without a Gateway, **external traffic cannot enter the Istio service mesh**.
 
 ---
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/Screenshot_1.png)
+
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/Screenshot_2.png)
+
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/Screenshot_3.png)
 
 **How it works?**
 
