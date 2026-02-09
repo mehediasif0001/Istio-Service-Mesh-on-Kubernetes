@@ -334,11 +334,6 @@ PeerAuthentication successfully enforced mTLS
 
 AuthorizationPolicy correctly restricted GET access
 
-Demonstrated Istio RBAC in action:
-
-✅ Allowed traffic from demo-app namespace
-
-❌ Blocked traffic from other namespaces (default)
 
 
 
