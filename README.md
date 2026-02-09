@@ -272,7 +272,74 @@ try to access:
 
 ![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/validate.png)
 
+---------
+# Istio mTLS & AuthorizationPolicy Demo
 
+This demo showcases **Istio PeerAuthentication and AuthorizationPolicy** to enforce mutual TLS (mTLS) and restrict access between namespaces.
+
+---
+
+## 1️⃣ Configured PeerAuthentication
+
+- Created `demo-peer-policy` in the `demo-app` namespace
+- Enforced **STRICT mutual TLS** for all workloads
+- Ensured **all service-to-service traffic** inside `demo-app` uses mTLS only
+yml file: https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/PeerAuthentication.yml
+---
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/pa.png)
+
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/pa%20get.png)
+
+
+## 2️⃣ Configured AuthorizationPolicy
+
+- Created `demo-api-policy` in the `demo-api` namespace
+- **Allowed GET requests** only from the `demo-app` namespace
+- **Blocked GET requests** from all other namespaces (e.g., `default`)
+yml file : https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/AuthorizationPolicy.yml
+---
+
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/ap%20crate.png)
+
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/ap-apply.png)
+
+### Identified services
+
+```bash
+# Check nginx service ClusterIP in demo-api
+kubectl get svc -n demo-api
+
+# Pods in demo-app namespace
+kubectl get po -n demo-app
+
+# Pods in default namespace
+kubectl get po -n default
+
+# From default namespace pod → access denied
+kubectl exec <default-pod> -c curl -- curl -s <nginx-service-IP>
+
+# From demo-app namespace pod → access allowed
+kubectl exec <demo-app-pod> -n demo-app -c curl -- curl -s <nginx-service-IP>
+```
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/curl.png)
+
+4️⃣ Outcome / Verification
+
+PeerAuthentication successfully enforced mTLS
+
+AuthorizationPolicy correctly restricted GET access
+
+Demonstrated Istio RBAC in action:
+
+✅ Allowed traffic from demo-app namespace
+
+❌ Blocked traffic from other namespaces (default)
+
+
+
+
+
+....
 
 📊 Business Impact
 
