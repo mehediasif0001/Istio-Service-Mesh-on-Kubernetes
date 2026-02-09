@@ -1,0 +1,11 @@
+# PeerAuthentication policy to enforce STRICT mutual TLS
+# Applies to all workloads in the demo-app namespace
+
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: demo-peer-policy        # Policy name
+  namespace: demo-app           # Target namespace
+spec:
+  mtls:
+    mode: STRICT                # Allow only mTLS traffic
