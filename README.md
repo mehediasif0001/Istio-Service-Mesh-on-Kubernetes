@@ -321,7 +321,12 @@ kubectl exec <default-pod> -c curl -- curl -s <nginx-service-IP>
 # From demo-app namespace pod → access allowed
 kubectl exec <demo-app-pod> -n demo-app -c curl -- curl -s <nginx-service-IP>
 ```
-![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/curl.png)
+| Pod Namespace      | Command                                                                 | Result   | Explanation                                        |
+|-------------------|-------------------------------------------------------------------------|----------|---------------------------------------------------|
+| default           | `kubectl exec <default-pod> -c curl -- curl -s <nginx-service-IP>`      | ❌ Blocked | Access denied by Istio AuthorizationPolicy       |
+| demo-app          | `kubectl exec <demo-app-pod> -n demo-app -c curl -- curl -s <nginx-service-IP>` | ✅ Allowed | Access allowed because demo-app namespace is permitted |
+
+![image alt](https://github.com/mehediasif0001/Istio-Service-Mesh-on-Kubernetes/blob/main/image_istio/curldemo.png)
 
 4️⃣ Outcome / Verification
 
