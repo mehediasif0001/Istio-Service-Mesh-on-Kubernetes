@@ -1,0 +1,14 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: demo-api-policy           # Policy name
+  namespace: demo-api             # Target namespace
+spec:
+  action: ALLOW                   # Allow traffic
+  rules:
+  - from:
+    - source:
+        namespaces: ["demo-app"]  # Only allow traffic from demo-app namespace
+    to:
+    - operation:
+        methods: ["GET"]          # Only GET requests allowed
